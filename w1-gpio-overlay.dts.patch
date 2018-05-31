@@ -1,0 +1,278 @@
+--- linux/arch/arm/boot/dts/overlays/w1-gpio-overlay.dts.old	2018-05-26 11:11:24.800248463 +0900
++++ linux/arch/arm/boot/dts/overlays/w1-gpio-overlay.dts	2018-05-26 14:13:18.810244299 +0900
+@@ -9,33 +9,267 @@
+ 		target-path = "/";
+ 		__overlay__ {
+ 
+-			w1: onewire@0 {
++			w1_0: onewire@0 {
+ 				compatible = "w1-gpio";
+ 				pinctrl-names = "default";
+-				pinctrl-0 = <&w1_pins>;
++				pinctrl-0 = <&w1_0_pins>;
+ 				gpios = <&gpio 4 0>;
+ 				rpi,parasitic-power = <0>;
+ 				status = "okay";
+ 			};
++			w1_1: onewire@1 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_1_pins>;
++				gpios = <&gpio 5 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_2: onewire@2 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_2_pins>;
++				gpios = <&gpio 6 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_3: onewire@3 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_3_pins>;
++				gpios = <&gpio 12 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_4: onewire@4 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_4_pins>;
++				gpios = <&gpio 13 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_5: onewire@5 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_5_pins>;
++				gpios = <&gpio 16 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_6: onewire@6 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_6_pins>;
++				gpios = <&gpio 17 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_7: onewire@7 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_7_pins>;
++				gpios = <&gpio 18 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_8: onewire@8 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_8_pins>;
++				gpios = <&gpio 19 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_9: onewire@9 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_9_pins>;
++				gpios = <&gpio 22 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_10: onewire@10 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_10_pins>;
++				gpios = <&gpio 23 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_11: onewire@11 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_11_pins>;
++				gpios = <&gpio 24 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_12: onewire@12 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_12_pins>;
++				gpios = <&gpio 25 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
++			w1_13: onewire@13 {
++				compatible = "w1-gpio";
++				pinctrl-names = "default";
++				pinctrl-0 = <&w1_13_pins>;
++				gpios = <&gpio 27 0>;
++				rpi,parasitic-power = <0>;
++				status = "okay";
++			};
+ 		};
+ 	};
+ 
+ 	fragment@1 {
+ 		target = <&gpio>;
+ 		__overlay__ {
+-			w1_pins: w1_pins@0 {
++			w1_0_pins: w1_pins@0 {
+ 				brcm,pins = <4>;
+ 				brcm,function = <0>; // in (initially)
+ 				brcm,pull = <0>; // off
+ 			};
++			w1_1_pins: w1_pins@1 {
++				brcm,pins = <5>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_2_pins: w1_pins@2 {
++				brcm,pins = <6>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_3_pins: w1_pins@3 {
++				brcm,pins = <12>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_4_pins: w1_pins@4 {
++				brcm,pins = <13>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_5_pins: w1_pins@5 {
++				brcm,pins = <16>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_6_pins: w1_pins@6 {
++				brcm,pins = <17>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_7_pins: w1_pins@7 {
++				brcm,pins = <18>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_8_pins: w1_pins@8 {
++				brcm,pins = <19>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_9_pins: w1_pins@9 {
++				brcm,pins = <22>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_10_pins: w1_pins@10 {
++				brcm,pins = <23>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_11_pins: w1_pins@11 {
++				brcm,pins = <24>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_12_pins: w1_pins@12 {
++				brcm,pins = <25>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
++			w1_13_pins: w1_pins@13 {
++				brcm,pins = <27>;
++				brcm,function = <0>; // in (initially)
++				brcm,pull = <0>; // off
++			};
+ 		};
+ 	};
+ 
+ 	__overrides__ {
+-		gpiopin =       <&w1>,"gpios:4",
+-				<&w1>,"reg:0",
+-				<&w1_pins>,"brcm,pins:0",
+-				<&w1_pins>,"reg:0";
+-		pullup =        <&w1>,"rpi,parasitic-power:0";
++		gpiopin0 =      <&w1_0>,"gpios:4",
++				<&w1_0>,"reg:0",
++				<&w1_0_pins>,"brcm,pins:0",
++				<&w1_0_pins>,"reg:0";
++		gpiopin1 =      <&w1_1>,"gpios:4",
++				<&w1_1>,"reg:0",
++				<&w1_1_pins>,"brcm,pins:0",
++				<&w1_1_pins>,"reg:0";
++		gpiopin2 =      <&w1_2>,"gpios:4",
++				<&w1_2>,"reg:0",
++				<&w1_2_pins>,"brcm,pins:0",
++				<&w1_2_pins>,"reg:0";
++		gpiopin3 =      <&w1_3>,"gpios:4",
++				<&w1_3>,"reg:0",
++				<&w1_3_pins>,"brcm,pins:0",
++				<&w1_3_pins>,"reg:0";
++		gpiopin4 =      <&w1_4>,"gpios:4",
++				<&w1_4>,"reg:0",
++				<&w1_4_pins>,"brcm,pins:0",
++				<&w1_4_pins>,"reg:0";
++		gpiopin5 =      <&w1_5>,"gpios:4",
++				<&w1_5>,"reg:0",
++				<&w1_5_pins>,"brcm,pins:0",
++				<&w1_5_pins>,"reg:0";
++		gpiopin6 =      <&w1_6>,"gpios:4",
++				<&w1_6>,"reg:0",
++				<&w1_6_pins>,"brcm,pins:0",
++				<&w1_6_pins>,"reg:0";
++		gpiopin7 =      <&w1_7>,"gpios:4",
++				<&w1_7>,"reg:0",
++				<&w1_7_pins>,"brcm,pins:0",
++				<&w1_7_pins>,"reg:0";
++		gpiopin8 =      <&w1_8>,"gpios:4",
++				<&w1_8>,"reg:0",
++				<&w1_8_pins>,"brcm,pins:0",
++				<&w1_8_pins>,"reg:0";
++		gpiopin9 =      <&w1_9>,"gpios:4",
++				<&w1_9>,"reg:0",
++				<&w1_9_pins>,"brcm,pins:0",
++				<&w1_9_pins>,"reg:0";
++		gpiopin10 =     <&w1_10>,"gpios:4",
++				<&w1_10>,"reg:0",
++				<&w1_10_pins>,"brcm,pins:0",
++				<&w1_10_pins>,"reg:0";
++		gpiopin11 =     <&w1_11>,"gpios:4",
++				<&w1_11>,"reg:0",
++				<&w1_11_pins>,"brcm,pins:0",
++				<&w1_11_pins>,"reg:0";
++		gpiopin12 =     <&w1_12>,"gpios:4",
++				<&w1_12>,"reg:0",
++				<&w1_12_pins>,"brcm,pins:0",
++				<&w1_12_pins>,"reg:0";
++		gpiopin13 =     <&w1_13>,"gpios:4",
++				<&w1_13>,"reg:0",
++				<&w1_13_pins>,"brcm,pins:0",
++				<&w1_13_pins>,"reg:0";
++		pullup0 =        <&w1_0>,"rpi,parasitic-power:0";
++		pullup1 =        <&w1_1>,"rpi,parasitic-power:0";
++		pullup2 =        <&w1_2>,"rpi,parasitic-power:0";
++		pullup3 =        <&w1_3>,"rpi,parasitic-power:0";
++		pullup4 =        <&w1_4>,"rpi,parasitic-power:0";
++		pullup5 =        <&w1_5>,"rpi,parasitic-power:0";
++		pullup6 =        <&w1_6>,"rpi,parasitic-power:0";
++		pullup7 =        <&w1_7>,"rpi,parasitic-power:0";
++		pullup8 =        <&w1_8>,"rpi,parasitic-power:0";
++		pullup9 =        <&w1_9>,"rpi,parasitic-power:0";
++		pullup10 =       <&w1_10>,"rpi,parasitic-power:0";
++		pullup11 =       <&w1_11>,"rpi,parasitic-power:0";
++		pullup12 =       <&w1_12>,"rpi,parasitic-power:0";
++		pullup13 =       <&w1_13>,"rpi,parasitic-power:0";
+ 	};
+ };
