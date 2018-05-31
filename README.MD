@@ -1,57 +1,78 @@
-RasPIで多点温度計測をするためのPatch
+# RasPIで多点温度計測をするためのPatch
+
+
 linux/arch/arm/boot/dts/overlays/w1-gpio-overlay.dtsを変更します。
+
 
 有効にするためには/boot/config.txtの変更が必要です。
 
-(OSの更新)
+
+## (OSの更新)
+```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
+```
 
-(ファームウエア更新)
+## (ファームウエア更新)
+```
 sudo rpi-update
 sudo reboot
+```
 
-カーネルの更新
-(ルートディレクトリへ)
+## カーネルの更新
+### (ルートディレクトリへ)
+```
 cd
-
-(gitのインストール)
+```
+### (gitのインストール)
+```
 sudo apt-get install git
-
-(linuxのソースを持ってくる)
+```
+### (linuxのソースを持ってくる)
+```
 git clone --depth=1 https://github.com/raspberrypi/linux
-
-(bcパッケージのインストール)
+```
+### (bcパッケージのインストール)
+```
 sudo apt-get install bc
-
-(linux/arch/arm/boot/dts/overlays/w1-gpio-overlay.dtsの変更）
+```
+### (linux/arch/arm/boot/dts/overlays/w1-gpio-overlay.dtsの変更）
 このPatch
 
-(kernel Build Configuration)
+### (kernel Build Configuration)
+```
 cd linux/
 KERNEL=kernel7
 make bcm2709_defconfig
-
-(kernel Build)
+```
+### (kernel Build)
+```
 make -j4 zImage modules dtbs
 sudo make modules_install
 sudo cp arch/arm/boot/dts/*.dtb /boot/
 sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/overlays/
 sudo cp arch/arm/boot/dts/overlays/README /boot/overlays/
 sudo scripts/mkknlimg  arch/arm/boot/zImage /boot/$KERNEL.img
-(再起動)
+```
+### (再起動)
+```
 sudo reboot
+```
+### (configure)
+``` sudo raspi-config ```
 
-(configure)
-sudo raspi-config
+
  5 Interface Options  P7 1-Wire  : Enable
 
-sudo vi /etc/modules 以下を追加
-　w1-gpio
-　w1-therm
 
+sudo vi /etc/modules 以下を追加
+```
+w1-gpio
+w1-therm
+```
 sudo vi /boot/config.txt　以下を追加
+```
 #dtoverlay=w1-gpio,gpiopin0=4
 dtoverlay=w1-gpio,gpiopin0=4
 
@@ -95,11 +116,14 @@ dtoverlay=w1-gpio,gpiopin12=-1
 dtoverlay=w1-gpio,gpiopin13=-1
 
 dtdebug=on
-
+```
 dtdebug=on は再起動後　sudo vcdbg log msg で確認後　削除
+
+
 有効にするポートは-1でない方に変更。
 
-確認
+
+## 確認
 ls /sys/bus/w1/devices/
 
 
